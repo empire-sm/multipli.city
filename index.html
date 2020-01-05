@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>SONICMULTIPLICITIES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+  <link rel="stylesheet" href="//tilomitra.github.io/infinite/infinite.css">
+  <link href="//fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="index.css" />
+	<head>
+	  <meta charset="UTF-8">
+        <!-- Bootstrap -->
+        <link href="//fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/clappr-markers-plugin@latest/dist/clappr-markers-plugin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/clappr-pip-plugin@latest/dist/clappr-pip-plugin.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+	</head>
+  <body style="color:#EEEEEE;background-color:#000000;">
+    <div style="margin: 10px auto;max-width: 700px;">
+      <div id="player" style=""></div>
+      <script>
+      hasMSE = function() {
+        var mse = "MediaSource" in window || "WebKitMediaSource" in window;
+        return !!mse;
+      }
+console.log(hasMSE())
+  var player = new Clappr.Player({
+      // source: hasMSE() ? 'https://s3.amazonaws.com/sonicmultiplicities.audio/dash_streams/dash14/dash.mpd' : 'https://s3.amazonaws.com/sonicmultiplicities.audio/videos/mafa1_yuv420p_proxy.mp4',
+      // source: hasMSE() ? 'https://s3.amazonaws.com/sonicmultiplicities.audio/dash_streams/homepage/dash.mpd' : 'https://s3.amazonaws.com/sonicmultiplicities.audio/videos/mafa1_yuv420p_proxy.mp4',
+      source: hasMSE() ? 'https://s3.amazonaws.com/sonicmultiplicities.audio/dash_streams/dash16/dash.mpd' : 'https://s3.amazonaws.com/sonicmultiplicities.audio/videos/mafa1_yuv420p_proxy.mp4',
+      plugins: [DashShakaPlayback, LevelSelector, ClapprPIPPlugin, ClapprMarkersPlugin],
+      autoPlay: true,
+      poster: '//pbs.twimg.com/media/EArpq-0UIAAwRwv?format=jpg&name=medium',
+      watermark: "//sonicmultiplicities.audio/tri-alpha.png", position: 'bottom-left',
+      // watermarkLink: '/music/SA001/',
+      playback: {
+        playInline: true,
+      },
+      recycleVideo: Clappr.Browser.isMobile,
+      shakaConfiguration: {
+        preferredAudioLanguage: 'en-US',
+        streaming: {
+          rebufferingGoal: 15
+        }         
+      },
+      // disableVideoTagContextMenu: true,
+      hideMediaControlDelay: 1000,
+      markersPlugin: {
+        markers: [
+          new ClapprMarkersPlugin.StandardMarker(1, "Injection Time Lapse"),
+          new ClapprMarkersPlugin.StandardMarker(265, "Injection Time Lapse"),
+          new ClapprMarkersPlugin.StandardMarker(865, "Injection Time Lapse")
+        ],
+        tooltipBottomMargin: 17 // optional
+      },
+      parentId: "#player"
+    });
+
+/* Make the bouncy balls into triangles to be more SM-ey yo */
+
+var bouncyList = document.getElementsByClassName("spinner-three-bounce");
+
+bouncyList[0].children[0].textContent = '▲'
+bouncyList[0].children[1].textContent = '▲'
+bouncyList[0].children[2].textContent = '▲'
+  </script>
+    </div>
+    <div id="navbar" align="center" style="margin:auto;">
+    <h1>
+      <a class="link dim b hover-bg-dark-red pa0 fl w-third" href="/documents/">DOCS</a>
+      <a class="link dim b hover-bg-dark-red pa0 fl w-third" href="/music/">MUSIC</a>
+      <a class="link dim b hover-bg-dark-red pa0 fl w-third" href="/people/">PEOPLE</a>
+    </h1>
+  </div>
+  <div id="linksbar" align="center" style="max-width:500px;margin:auto;">
+  <h1>
+  <a class="link dim b pulse" href="pcast://sonicmultiplicities.audio/feed.xml"><b><i class="fas fa-rss"></i></b></a>
+  <a class="link dim b" href="https://sonicmultiplicities.bandcamp.com/"><i class="fab fa-bandcamp"></i></a>
+  <a class="link dim b" href="https://soundcloud.com/sonicmultiplicities"><i class="fab fa-soundcloud"></i></a>
+  <a class="link dim b" href="https://www.discogs.com/artist/7242131-Empire-Garrett-Semmelink"><i class="fas fa-compact-disc"></i></a>
+  <a class="link dim b" href="https://twitter.com/sociosonics"><i class="fab fa-twitter"></i></a>
+  <a class="link dim b" href="mailto:info@multipli.city"><i class="fas fa-envelope"></i></a>
+  </h1>
+  </div>
+    <div>
+      <div id="explain-1" style="font-family:'Titillium Web', sans-serif;" class="fl w-50 dim">
+        <h1 align="center" style="margin:auto 160px;font-size:100px;">
+          <i style="color:#0E0E0E;"><b style="color:#bababa;">▲</b></i>
+        </h1>
+        <div style="margin:5px;" class="ba b--solid">
+        <p style="font-size:18px;" align="justify">
+        <b>▲</b> is an experimental electroacoustic music project fronted by multi-instrumentalist, composer, audio engineer, and DSP programming specialist Andrew Grathwohl, and violinist/music educator Garrett Semmelink. We represent the most extreme effort ever made towards empowering the solo instrumentalist with software. We, who comprise ▲, believe that computers should be used to further the future exploration of the musical arts - not to streamline, evangelize, or mimic the musical past.
+        </p>
+        <p style="font-size:18px;" align="justify">
+        We exclusively perform works which fall under the banner of Grathwohl's <b><i>Sonic Multiplicities</i></b> musical framework.
+        </p>
+        </div>
+        <h1 align="center" style="margin:20px 160px;font-size:50px;">
+          <i style="color:#0E0E0E;"><b style="color:#bababa;">News</b></i>
+        </h1>
+        <div style="margin:5px;" class="ba b--solid">
+          <h3 align="center">
+            October 16, 2019
+          </h3>
+        <p style="font-size:18px;" align="justify">
+        We have been on a lengthy hiatus, in order to focus on honing the SM software and to expand the intellectual and philosophical breadth of our musical explorations.
+        </p>
+        <p style="font-size:18px;" align="justify">
+        What has resulted from this is a complete facelift for our internet presence (all of our online and social landing pages have new URLs, make note of the links at the top of this page). In addition, we have made a couple of major decisions.
+        </p>
+        <p style="font-size:18px;" align="justify">
+        First, we will be <i>reserving all rights</i> for our future music releases and any/all adjacent output. To make up for this decision, we will no longer charge any money for the digital copies of our releases. We will also price all forms of our physical releases at cost. Making any effort to directly profit from our musical ambitions, we have decided, would compromise the integrity and the value of our pursuits. It would also directly sanction the absurdly inadequate place music finds itself within our broader media ecology.
+        </p>
+        <p style="font-size:18px;" align="justify">
+        Second, we will not be placing our music onto platforms which have recklessly and inelegantly compromised the integrity and positive externalities music has to offer society. This means that Spotify, Apple Music, Tidal, and all of that ilk can go take a hike. Our music releases will officially be cataloged on the official SM podcast feed. Links to FLAC, MP3, and OPUS copies of our releases will always be provided, without exception.
+        </div>
+      </div>
+        <!--
+        <p style="font-size:15px;" align="justify">
+        The invocation of an equilateral triangle represents what Grathwohl believes to be the ideal relationship between the musician and their technologies. The musician and their tools exist as equal cevians within euclidian space, conjoining at the top to form their combined <b>music</b>, only after both face one another at equal angles of perspective. At this meeting ground, the musician and their technology serve to propel an ideal of higher purpose, forming a tetahedron of
+        multisensory physical experience. 
+        </p>
+        -->
+      <div id="explain-2" style="font-family:'Titillium Web', sans-serif;" class="fl w-50 dim">
+        <h1 align="center" style="margin:30px 40px;font-size:50px;">
+          <b><u>SONIC MULTIPLICITIES</u></b>
+        </h1>
+        <h4 align="center" style="margin:3px 4px;font-size:20px;">
+          <b><u>an electroacoustic theory by andrew grathwohl</u></b>
+        </h4>
+        <div style="margin:5px;" class="ba b--solid ">
+        <p style="font-size:18px;" align="justify">
+          <b>SM</b> is an interactive musical synthesis application and performance framework developed by composer, multi-instrumentalist, audio scientist, and DSP engineer Andrew Grathwohl. Its goal is to be seamless yet simple; hidden from plain sight, and yet so powerful it can provoke lasting, aesthetically-pleasing memories.
+        </p>
+        <p style="font-size:18px;" align="justify">
+          What makes <b>SM</b> unique is its approach to real-time control; musicians "play" the SM software by the explicit musical choices they make, encouraging a gestural performance methodology rich in complexity, opportunity, and extremity. The skilled <i>sonicmeister</i> is aware of how even the smallest modifications to intonation, harmony, rhythmic timing, and motif leads to massive and radical musical events. 
+        </p>
+        <p style="font-size:18px;" align="justify">
+          This software implements, via a variety of deep-learning, neural network, and probability approaches, a complex and artificially-intelligent musical accompiament, which serves to <i>multiply</i> a musician's performance, rather than simply serving as a sideman or partner.
+        </p>
+        <p style="font-size:18px;" align="justify">
+          Inherent in SM's design is a human-like collection of intentional flaws in the logic system employed. This is what separates Grathwohl's music from most other noteworthy approaches in the musical AI space; it maintains the humanity that makes music both possible and enjoyable. Music is the highest form of communication ever implemented by humans - we cannot entrust it to mere computer calculations. Within all SM actions is the burdon of intent, which, if satisfied by the performer, enables from the performer further degrees of control over the SM system.
+        </p>
+        <p style="font-size:18px;" align="justify">
+          Personal computing should have generated a new musical golden age when it first hit humanity back in the late eighties. Unfortunately, it has generally served not to expand musical possibilities, but rather to make more expedient antiquated and boring traditions from past musical eras. From DAW applications to streaming audio delivery platforms, music technology has promoted laziness, cut fans off from points of engagement, and left us stranded with no record stores from which to seek
+          advice, nor any digital solutions for those seeking an alternative approach. Pedagogy shamelessly parrots the ideals of the old masters, frivolously clueless to how antiquated and out of touch they are with today's musics and today's friendly listeners. We intend to propose changes to these out of touch approaches, through exercising our musical and artistic consciences.
+        </p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div id="privacy" style="font-family:'Titillium Web', sans-serif;" class="fr dim">
+        <h1 align="right" style="font-size:14px;">
+          <i style="color:#0E0E0E;"><b style="color:#bababa;">Privacy Notice</b></i>
+        </h1>
+        <p style="font-size:10px;" align="right">
+        We will never track you, try to sell you things, or hijack your excess compute resources to mine cryptocurrency on this webpage.
+        </p>
+      </div>
+    </div>
+	</body>
+</html>
