@@ -1,0 +1,2 @@
+.pulse {animation: opacityPulse 2s ease-out;animation-iteration-count: infinite; opacity: 1;}
+.spinner {animation: rotating 2s linear;animation-iteration-count: infinite;}
