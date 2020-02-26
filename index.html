@@ -35,7 +35,7 @@ console.log(hasMSE())
       // source: hasMSE() ? 'https://s3.amazonaws.com/sonicmultiplicities.audio/dash_streams/dash14/dash.mpd' : 'https://s3.amazonaws.com/sonicmultiplicities.audio/videos/mafa1_yuv420p_proxy.mp4',
       // source: hasMSE() ? 'https://s3.amazonaws.com/sonicmultiplicities.audio/dash_streams/homepage/dash.mpd' : 'https://s3.amazonaws.com/sonicmultiplicities.audio/videos/mafa1_yuv420p_proxy.mp4',
       source: hasMSE() ? 'https://s3.amazonaws.com/sonicmultiplicities.audio/dash_streams/dash16/dash.mpd' : 'https://s3.amazonaws.com/sonicmultiplicities.audio/videos/mafa1_yuv420p_proxy.mp4',
-      plugins: [DashShakaPlayback, LevelSelector, ClapprPIPPlugin, ClapprMarkersPlugin],
+      plugins: [DashShakaPlayback, LevelSelector, ClapprPIPPlugin],
       autoPlay: true,
       poster: '//pbs.twimg.com/media/EArpq-0UIAAwRwv?format=jpg&name=medium',
       watermark: "//sonicmultiplicities.audio/tri-alpha.png", position: 'bottom-left',
